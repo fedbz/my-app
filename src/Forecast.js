@@ -5,7 +5,7 @@ export default function Forecast() {
     <div className="row third text-center" id="forecast">
       <div className="col">
         TUE
-        <div classNameName="weather-icon ">☀️</div>
+        <div className="weather-icon">☀️</div>
         <div className="small-temperature">7º|12º</div>
       </div>
       <div className="col">
