@@ -12,7 +12,7 @@ export default function App() {
       <div className="container rounded p-5 shadow-lg mt-5">
         <Search />
         <hr />
-        <CurrentWeather />
+        <CurrentWeather defaultCity="Rome" />
         <hr />
         <Forecast />
         <script src="src/index.js" />
