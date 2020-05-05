@@ -8,7 +8,7 @@ export default function Credits() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Open-source code
+        Open-source code{" "}
       </a>
       by fedbz
     </div>
