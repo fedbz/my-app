@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReadingGirl from "./reading-girl.png";
+import DateTime from "./DateTime";
 import axios from "axios";
 
 export default function CurrentWeather(props) {
@@ -15,13 +16,17 @@ export default function CurrentWeather(props) {
       wind: response.data.wind.speed,
       city: response.data.name,
       description: response.data.weather[0].description,
+      date: new Date(response.data.dt * 1000),
     });
   }
   if (weatherInfo.ready) {
     return (
       <div className="row second pt-3 pb-3">
         <div className="col">
-          <div className="date-time small" id="date_time" />
+          <div className="date-time small" id="date_time">
+            <DateTime date={weatherInfo.date} />
+          </div>
+
           <div id="description"> {weatherInfo.description} </div>
           <h1>
             <span id="city" /> {weatherInfo.city} <span id="temp-digit" />
