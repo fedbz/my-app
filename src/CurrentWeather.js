@@ -1,6 +1,7 @@
 import React from "react";
 import ReadingGirl from "./reading-girl.png";
 import DateTime from "./DateTime";
+import WeatherIcons from "./WeatherIcons";
 
 export default function CurrentWeather(props) {
   return (
@@ -20,8 +21,8 @@ export default function CurrentWeather(props) {
         </h1>
       </div>
 
-      <div className="col text-center">
-        <img src={props.info.iconUrl} alt={props.info.description} id="icon" />
+      <div className="col text-center main-image">
+        <WeatherIcons code={props.info.icon} />
       </div>
 
       <div className="col">

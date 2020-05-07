@@ -36,3 +36,8 @@ hr {
 #description:first-letter {
   text-transform: capitalize;
 }
+
+.main-image {
+  vertical-align: middle;
+  margin-top: 45px;
+}
