@@ -5,6 +5,7 @@ import CurrentWeather from "./CurrentWeather";
 export default function Search(props) {
   const [weatherInfo, setweatherInfo] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+  const [metric, setMetric] = useState("C");
 
   function search() {
     const apiKey = "3b5a0f5b92d32dc7cafcc0e735ca8c5b";
@@ -19,6 +20,16 @@ export default function Search(props) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+  function setFahrenheit(event) {
+    event.preventDefault();
+    setMetric("F");
+  }
+
+  function setCelsius(event) {
+    event.preventDefault();
+    setMetric("C");
   }
 
   function handleResponse(response) {
@@ -36,47 +47,54 @@ export default function Search(props) {
 
   if (weatherInfo.ready) {
     return (
-      <div className="row first">
-        <div className="col-6">
-          <form id="location_form" onSubmit={handleSubmit}>
-            <div className="input-group mb-3">
-              <input
-                id="location_input"
-                type="text"
-                className="form-control"
-                placeholder="Enter Location"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-                onChange={handleCityChange}
-              />
-              <div className="input-group-append" id="magnifying_glass">
-                <span className="input-group-text" id="basic-addon2">
-                  <i className="fas fa-search" />
-                </span>
+      <div>
+        <div className="row first">
+          <div className="col-6">
+            <form id="location_form" onSubmit={handleSubmit}>
+              <div className="input-group mb-3">
+                <input
+                  id="location_input"
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter Location"
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                  onChange={handleCityChange}
+                />
+                <div className="input-group-append" id="magnifying_glass">
+                  <span className="input-group-text" id="basic-addon2">
+                    <i className="fas fa-search" />
+                  </span>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
+          <div className="col-4 text-right">
+            <button
+              type="button"
+              className="btn btn-light btn-sm"
+              id="button_current_location"
+            >
+              Current Location
+            </button>
+          </div>
+          <div className="col-2 text-right large">
+            <span className="scale" id="tempScaleC">
+              <strong>
+                <a href="/" onClick={setCelsius}>
+                  ºC
+                </a>
+              </strong>
+            </span>
+            <span>|</span>
+            <span className="scale" id="tempScaleF">
+              <a href="/" onClick={setFahrenheit}>
+                ºF
+              </a>
+            </span>
+          </div>
         </div>
-        <div className="col-4 text-right">
-          <button
-            type="button"
-            className="btn btn-light btn-sm"
-            id="button_current_location"
-          >
-            Current Location
-          </button>
-        </div>
-        <div className="col-2 text-right large">
-          <span className="scale" id="tempScaleC">
-            <strong>ºC</strong>
-          </span>
-          <span>|</span>
-          <span className="scale" id="tempScaleF">
-            ºF
-          </span>
-        </div>
-        <hr />
-        <CurrentWeather info={weatherInfo} />
+        <CurrentWeather metric={metric} info={weatherInfo} />
       </div>
     );
   } else {

@@ -2,6 +2,7 @@ import React from "react";
 import ReadingGirl from "./reading-girl.png";
 import DateTime from "./DateTime";
 import WeatherIcons from "./WeatherIcons";
+import TemperatureScale from "./TemperatureScale";
 
 export default function CurrentWeather(props) {
   return (
@@ -13,10 +14,12 @@ export default function CurrentWeather(props) {
 
         <div id="description"> {props.info.description} </div>
         <h1>
-          <span id="city" /> {props.info.city} <span id="temp-digit" />
-          <span className="degrees">
-            {" "}
-            {Math.round(props.info.temperature)} ºC
+          <span id="city"> {props.info.city}</span>{" "}
+          <span id="temp-digit">
+            <TemperatureScale
+              temp={props.info.temperature}
+              metric={props.metric}
+            />
           </span>
         </h1>
       </div>
