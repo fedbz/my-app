@@ -9,7 +9,7 @@ export default function TemperatureScale(props) {
       <div>
         <span className="degrees">
           {" "}
-          {Math.round(props.temp)} {props.metric}
+          {Math.round(props.temp)}º {props.metric}
         </span>
       </div>
     );
@@ -18,7 +18,7 @@ export default function TemperatureScale(props) {
       <div>
         <span className="degrees">
           {" "}
-          {Math.round(F())} {props.metric}
+          {Math.round(F())}º {props.metric}
         </span>
       </div>
     );

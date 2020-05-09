@@ -16,6 +16,8 @@ export default function Search(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    let cityInputElement = document.querySelector("#location_input");
+    setCity(cityInputElement.value);
     search();
   }
 
@@ -62,10 +64,15 @@ export default function Search(props) {
                   aria-describedby="basic-addon2"
                   onChange={handleCityChange}
                 />
+
                 <div className="input-group-append" id="magnifying_glass">
-                  <span className="input-group-text" id="basic-addon2">
+                  <button
+                    type="submit"
+                    className="input-group-text"
+                    id="basic-addon2"
+                  >
                     <i className="fas fa-search" />
-                  </span>
+                  </button>
                 </div>
               </div>
             </form>
