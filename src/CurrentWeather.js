@@ -25,7 +25,7 @@ export default function CurrentWeather(props) {
       </div>
 
       <div className="col text-center main-image">
-        <WeatherIcons code={props.info.icon} />
+        <WeatherIcons code={props.info.icon} size={65} />
       </div>
 
       <div className="col">

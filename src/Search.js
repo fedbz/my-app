@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CurrentWeather from "./CurrentWeather";
+import Forecast from "./Forecast";
 
 export default function Search(props) {
   const [weatherInfo, setweatherInfo] = useState({ ready: false });
@@ -95,6 +96,8 @@ export default function Search(props) {
           </div>
         </div>
         <CurrentWeather metric={metric} info={weatherInfo} />
+        <hr />
+        <Forecast city={weatherInfo.city} />
       </div>
     );
   } else {
