@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import WeatherIcons from "./WeatherIcons";
+
+import ForecastHours from "./ForecastHours";
 import "./Forecast.css";
 import axios from "axios";
 
@@ -12,18 +13,14 @@ export default function Forecast(props) {
     setLoaded(true);
   }
 
-  if (loaded) {
+  if (loaded && props.city === forecast.city.name) {
     return (
       <div className="row third text-center" id="forecast">
-        <div className="col">
-          {new Date(forecast.list[0].dt * 1000).getHours()}:00
-          <div className="weather-icon">
-            <WeatherIcons size={35} code={forecast.list[0].weather[0].icon} />
-          </div>
-          <div className="small-temperature">
-            {Math.round(forecast.list[0].main.temp)}ºC
-          </div>
-        </div>
+        <ForecastHours data={forecast.list[0]} metric={props.metric} />
+        <ForecastHours data={forecast.list[1]} metric={props.metric} />
+        <ForecastHours data={forecast.list[2]} metric={props.metric} />
+        <ForecastHours data={forecast.list[3]} metric={props.metric} />
+        <ForecastHours data={forecast.list[4]} metric={props.metric} />
       </div>
     );
   } else {

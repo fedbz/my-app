@@ -4,6 +4,7 @@ export default function TemperatureScale(props) {
   function F() {
     return (props.temp * 9) / 5 + 32;
   }
+
   if (props.metric === "C") {
     return (
       <div>

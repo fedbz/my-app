@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import CurrentWeather from "./CurrentWeather";
 import Forecast from "./Forecast";
+import "./Search.css";
 
 export default function Search(props) {
   const [weatherInfo, setweatherInfo] = useState({ ready: false });
@@ -77,22 +78,12 @@ export default function Search(props) {
               </div>
             </form>
           </div>
-          <div className="col-4 text-right">
-            <button
-              type="button"
-              className="btn btn-light btn-sm"
-              id="button_current_location"
-            >
-              Current Location
-            </button>
-          </div>
+          <div className="col-4 text-right"></div>
           <div className="col-2 text-right large">
             <span className="scale" id="tempScaleC">
-              <strong>
-                <a href="/" onClick={setCelsius}>
-                  ºC
-                </a>
-              </strong>
+              <a href="/" onClick={setCelsius}>
+                ºC
+              </a>
             </span>
             <span>|</span>
             <span className="scale" id="tempScaleF">
@@ -104,7 +95,7 @@ export default function Search(props) {
         </div>
         <CurrentWeather metric={metric} info={weatherInfo} />
         <hr />
-        <Forecast city={weatherInfo.city} />
+        <Forecast city={weatherInfo.city} metric={metric} />
       </div>
     );
   } else {
